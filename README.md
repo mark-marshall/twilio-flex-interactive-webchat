@@ -8,7 +8,7 @@ This package can only be consumed together with Twilio Flex. Visit http://twilio
 ## Why?
 This an example of creating a custom redux reducer to the existing webchat Redux store.  
 
-This is mainly an example - it covers the specifc case of replacing the [close chat button](https://github.com/twilio-professional-services/example-webchat-redux/blob/master/src/components/endChatModal.js) with a new component [endChatModal] (https://github.com/twilio-professional-services/example-webchat-redux/blob/master/src/components/endChatModal.js). 
+This is mainly an example - it covers the specifc case of replacing the [close chat button](https://github.com/twilio-professional-services/example-webchat-redux/blob/master/src/components/endChatModal.js) with a new component [endChatModal](https://github.com/twilio-professional-services/example-webchat-redux/blob/master/src/components/endChatModal.js). 
 
 The component rerenders itself when it's custom action from its [reducer](https://github.com/twilio-professional-services/example-webchat-redux/blob/master/src/store/reducers/customReducer.js) is called.  The custom reducer is derived from the [state](https://github.com/twilio-professional-services/example-webchat-redux/blob/master/src/store/state.js) when initialized in App.js.
 
