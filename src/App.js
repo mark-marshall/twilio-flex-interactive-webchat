@@ -11,17 +11,6 @@ import './listeners/CustomListeners';
 
 class App extends React.Component {
 
-  /*
-    FIXME:
-            - AMAZING PROGERSS!  We now have the redux working and pushing the first message.  Last piece will be to get now hook into the chat channel attribute changes
-              and update the store with that and you will be in business!
-    TODO:
-          - Update Store with a text clickablemessages object and test the render of the button in the UI
-          (COMPLETED)
-          - Hook into the on/listener - payload changes and try to subscribe to updates in the attributes
-          - Read attributes to redux and we should be in business
-  */
-
   state = {};
 
   constructor(props) {

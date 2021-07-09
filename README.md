@@ -1,8 +1,11 @@
-# Example webchat custom redux reducer
+# Flex Web Chat with Selectable Chat Messages
 
 This project was bootstrapped with [Flex Webchat UI Sample](https://github.com/twilio/flex-webchat-ui-sample)
 
 This package can only be consumed together with Twilio Flex. Visit http://twilio.com/flex to find out more.
+
+Selectable Chat Messages in Action  
+![Plugin Demo](https://github.com/aestellwag/flex-selectable-chat-messages/blob/main/selectable-chat-messages.gif)
 
 
 ## Why?
