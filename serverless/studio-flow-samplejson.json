@@ -1,0 +1,515 @@
+{
+  "description": "Bot flow for creating a Flex webchat task",
+  "states": [
+    {
+      "name": "Trigger",
+      "type": "trigger",
+      "transitions": [
+        {
+          "next": "loop_1",
+          "event": "incomingMessage"
+        },
+        {
+          "event": "incomingCall"
+        },
+        {
+          "event": "incomingRequest"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -20,
+          "y": -10
+        }
+      }
+    },
+    {
+      "name": "renting_owning_sendreply",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "owned_or_rented",
+          "event": "incomingMessage"
+        },
+        {
+          "next": "send_to_flex_agent",
+          "event": "timeout"
+        },
+        {
+          "next": "send_to_flex_agent",
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -650,
+          "y": 1120
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "NFM Lending",
+        "body": "Are you renting or do you own the property?",
+        "timeout": "3600"
+      }
+    },
+    {
+      "name": "default_owned_or_rented",
+      "type": "send-message",
+      "transitions": [
+        {
+          "next": "send_to_flex_agent",
+          "event": "sent"
+        },
+        {
+          "next": "send_to_flex_agent",
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -980,
+          "y": 1390
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "NFM Lending",
+        "to": "{{contact.channel.address}}",
+        "body": "We were not able to validate your response of {{widgets.renting_owning_sendreply.inbound.Body}}, sending you to speak with an agent now."
+      }
+    },
+    {
+      "name": "owned_or_rented",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "default_owned_or_rented",
+          "event": "noMatch"
+        },
+        {
+          "next": "renting",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "If value equal_to Owned",
+              "arguments": [
+                "{{widgets.renting_owning_sendreply.inbound.Body}}"
+              ],
+              "type": "equal_to",
+              "value": "own"
+            }
+          ]
+        },
+        {
+          "next": "owned",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "If value equal_to Rented",
+              "arguments": [
+                "{{widgets.renting_owning_sendreply.inbound.Body}}"
+              ],
+              "type": "equal_to",
+              "value": "renting"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.renting_owning_sendreply.inbound.Body}}",
+        "offset": {
+          "x": -310,
+          "y": 1130
+        }
+      }
+    },
+    {
+      "name": "renting",
+      "type": "send-message",
+      "transitions": [
+        {
+          "next": "send_to_flex_agent",
+          "event": "sent"
+        },
+        {
+          "next": "send_to_flex_agent",
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -610,
+          "y": 1390
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "NFM Lending",
+        "to": "{{contact.channel.address}}",
+        "body": "You responded with: {{widgets.renting_owning_sendreply.inbound.Body}}"
+      }
+    },
+    {
+      "name": "owned",
+      "type": "send-message",
+      "transitions": [
+        {
+          "next": "send_to_flex_agent",
+          "event": "sent"
+        },
+        {
+          "next": "send_to_flex_agent",
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -240,
+          "y": 1400
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "NFM Lending",
+        "to": "{{contact.channel.address}}",
+        "body": "You responded with: \n{{widgets.renting_owning_sendreply.inbound.Body}}"
+      }
+    },
+    {
+      "name": "send_to_flex_agent",
+      "type": "send-to-flex",
+      "transitions": [
+        {
+          "event": "callComplete"
+        },
+        {
+          "event": "failedToEnqueue"
+        },
+        {
+          "event": "callFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 710,
+          "y": 1030
+        },
+        "workflow": "WW30dba7a8cc9bbead61910f1a9384dddd",
+        "channel": "TC80c22df3d11d0bb139358402ae8d6cef"
+      }
+    },
+    {
+      "name": "call_attributeFunction",
+      "type": "run-function",
+      "transitions": [
+        {
+          "next": "renting_owning_sendreply",
+          "event": "success"
+        },
+        {
+          "next": "send_to_flex_agent",
+          "event": "fail"
+        }
+      ],
+      "properties": {
+        "service_sid": "ZSddb1cff1d0d990491965642ec0e4daab",
+        "environment_sid": "ZE802a76b05699fbaf224ff07778eb840d",
+        "offset": {
+          "x": -980,
+          "y": 1120
+        },
+        "function_sid": "ZH4f09e51df6af4c1b0b65950e15cc533a",
+        "parameters": [
+          {
+            "value": "{{trigger.message.InstanceSid}}",
+            "key": "serviceSID"
+          },
+          {
+            "value": "{{trigger.message.ChannelSid}}",
+            "key": "chatChannelSID"
+          },
+          {
+            "value": "{\"clickableMessages\": [ {\"key\":\"renting\", \"message\":\"renting\"}, {\"key\":\"own\", \"message\":\"own\"}]}",
+            "key": "selectableChatMessagesObject"
+          }
+        ],
+        "url": "https://selectable-chat-messages-7889.twil.io/update-selectable-chat-messages"
+      }
+    },
+    {
+      "name": "enter_firstname",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "enter_lastname",
+          "event": "incomingMessage"
+        },
+        {
+          "next": "send_to_flex_agent",
+          "event": "timeout"
+        },
+        {
+          "next": "send_to_flex_agent",
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -1300,
+          "y": 530
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "NFM Lending",
+        "body": "Please enter your first name",
+        "timeout": "3600"
+      }
+    },
+    {
+      "name": "enter_lastname",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "enter_email",
+          "event": "incomingMessage"
+        },
+        {
+          "next": "send_to_flex_agent",
+          "event": "timeout"
+        },
+        {
+          "next": "send_to_flex_agent",
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -940,
+          "y": 530
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "NFM Lending",
+        "body": "Please enter your last name",
+        "timeout": "3600"
+      }
+    },
+    {
+      "name": "validate_name_SM",
+      "type": "run-function",
+      "transitions": [
+        {
+          "next": "full_name_sendreply",
+          "event": "success"
+        },
+        {
+          "next": "send_to_flex_agent",
+          "event": "fail"
+        }
+      ],
+      "properties": {
+        "service_sid": "ZSddb1cff1d0d990491965642ec0e4daab",
+        "environment_sid": "ZE802a76b05699fbaf224ff07778eb840d",
+        "offset": {
+          "x": -220,
+          "y": 530
+        },
+        "function_sid": "ZH4f09e51df6af4c1b0b65950e15cc533a",
+        "parameters": [
+          {
+            "value": "{{trigger.message.InstanceSid}}",
+            "key": "serviceSID"
+          },
+          {
+            "value": "{{trigger.message.ChannelSid}}",
+            "key": "chatChannelSID"
+          },
+          {
+            "value": "{\"clickableMessages\": [ {\"key\":\"yes{{flow.variables.count}}\", \"message\":\"yes\"}, {\"key\":\"no{{flow.variables.count}}\", \"message\":\"no\"}]}",
+            "key": "selectableChatMessagesObject"
+          }
+        ],
+        "url": "https://selectable-chat-messages-7889.twil.io/update-selectable-chat-messages"
+      }
+    },
+    {
+      "name": "full_name_sendreply",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "validate_full_name",
+          "event": "incomingMessage"
+        },
+        {
+          "next": "send_to_flex_agent",
+          "event": "timeout"
+        },
+        {
+          "next": "send_to_flex_agent",
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 130,
+          "y": 530
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "NFM Lending",
+        "body": "To confirm, your full name is:\n{{widgets.enter_firstname.inbound.Body}}  {{widgets.enter_lastname.inbound.Body}},\nand your email address is:\n{{widgets.enter_email.inbound.Body}} \nIs this correct?",
+        "timeout": "3600"
+      }
+    },
+    {
+      "name": "validate_full_name",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "send_to_flex_agent",
+          "event": "noMatch"
+        },
+        {
+          "next": "call_attributeFunction",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "If value equal_to_yes",
+              "arguments": [
+                "{{widgets.full_name_sendreply.inbound.Body}}"
+              ],
+              "type": "equal_to",
+              "value": "yes"
+            }
+          ]
+        },
+        {
+          "next": "loop_checker",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "If value equal_to_no",
+              "arguments": [
+                "{{widgets.full_name_sendreply.inbound.Body}}"
+              ],
+              "type": "equal_to",
+              "value": "no"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.full_name_sendreply.inbound.Body}}",
+        "offset": {
+          "x": 520,
+          "y": 530
+        }
+      }
+    },
+    {
+      "name": "enter_email",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "validate_name_SM",
+          "event": "incomingMessage"
+        },
+        {
+          "next": "send_to_flex_agent",
+          "event": "timeout"
+        },
+        {
+          "next": "send_to_flex_agent",
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -590,
+          "y": 530
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "NFM Lending",
+        "body": "Please enter your email address",
+        "timeout": "3600"
+      }
+    },
+    {
+      "name": "loop_checker",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "loop_1",
+          "event": "noMatch"
+        },
+        {
+          "next": "send_to_flex_agent",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "looped 3 times",
+              "arguments": [
+                "{{flow.variables.count}}"
+              ],
+              "type": "equal_to",
+              "value": "2"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "input": "{{flow.variables.count}}",
+        "offset": {
+          "x": 950,
+          "y": 230
+        }
+      }
+    },
+    {
+      "name": "loop_1",
+      "type": "set-variables",
+      "transitions": [
+        {
+          "next": "enter_firstname",
+          "event": "next"
+        }
+      ],
+      "properties": {
+        "variables": [
+          {
+            "value": "{%- if flow.variables.count -%}\n  {{flow.variables.count | plus: 1}}\n{%- else -%}\n  0\n{%- endif -%}",
+            "key": "count"
+          }
+        ],
+        "offset": {
+          "x": -1310,
+          "y": 250
+        }
+      }
+    },
+    {
+      "name": "function_1",
+      "type": "run-function",
+      "transitions": [
+        {
+          "event": "success"
+        },
+        {
+          "event": "fail"
+        }
+      ],
+      "properties": {
+        "service_sid": "ZSddb1cff1d0d990491965642ec0e4daab",
+        "environment_sid": "ZE802a76b05699fbaf224ff07778eb840d",
+        "offset": {
+          "x": 760,
+          "y": 1325
+        },
+        "function_sid": "ZH5b230a5c5674ebfe76be1e1d7d89faac",
+        "url": "https://selectable-chat-messages-7889.twil.io/test2"
+      }
+    }
+  ],
+  "initial_state": "Trigger",
+  "flags": {
+    "allow_concurrent_calls": true
+  }
+}

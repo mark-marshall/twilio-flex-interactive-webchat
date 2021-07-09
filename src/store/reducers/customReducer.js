@@ -7,7 +7,12 @@
   value. This action is dispatched from the CustomActionButton.
 */
 const initialState = {
-  showEndChatModal: false
+  showEndChatModal: false,
+  channel: null,
+  clickableMessages: [
+    {"key":"new", "message":"new"},
+    {"key":"existing", "message":"existing"}
+  ]
 };
 
 const CustomReducer = (state = initialState, action) => {
@@ -17,6 +22,16 @@ const CustomReducer = (state = initialState, action) => {
         ...state,
         showEndChatModal: action.payload.showEndChatModal
       };
+    case 'SET_CLICKABLE_MESSAGES':
+      return {
+        ...state,
+        clickableMessages: action.payload.clickableMessages
+      };
+    case 'SET_CHANNEL':
+        return {
+          ...state,
+          channel: action.payload.channel
+      }
     default:
       return state;
   }
