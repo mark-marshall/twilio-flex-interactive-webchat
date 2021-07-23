@@ -8,6 +8,10 @@ This project was bootstrapped with [Flex Webchat UI Sample](https://github.com/t
 
 This package can only be consumed together with Twilio Flex. Visit http://twilio.com/flex to find out more.
 
+This way this works is we push chat channel attributes via a studio flow > function, that we subscribe to from the web.  Any time the attributes change, we pull the "clickablemessage" object and push this into a redux store.  When then render the buttons based on what is contained within the object.  As the customer progresses through the studio flow, we push the next set of scripted answers as clickable buttons on their end.  Thus providing a scripted/guided experience through Studio flow.
+
+This is a great use case for automating specific tasks that could easily be solved in a self-service fashion vs talking to an agent.  Give it a try!
+
 Selectable Chat Messages in Action  
 ![Plugin Demo](https://github.com/aestellwag/flex-selectable-chat-messages/blob/main/selectable-chat-messages.gif)
 
