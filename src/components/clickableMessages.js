@@ -39,13 +39,10 @@ class ClickableMessages extends React.Component {
     FlexWebChat.manager.chatClient.getChannelBySid(this.props.channelSid)
     .then(channel => {
       channel.on('updated', ({ channel, updateReasons }) => {
-        if (
-          updateReasons.indexOf('attributes') !== -1 &&
-          channel.attributes.status === "INACTIVE"
-        ) {
-          window.Twilio.FlexWebChat.Actions.invokeAction('RestartEngagement');
+        if ( updateReasons.indexOf('attributes') !== -1 &&channel.attributes.status === "INACTIVE") {
+          FlexWebChat.Actions.invokeAction('RestartEngagement');
+          return;
         }
-
         if (undefined !== channel.attributes.clickableMessages && (updateReasons.indexOf('attributes') !== -1)) {
           dispatch({
             type: 'SET_CLICKABLE_MESSAGES',

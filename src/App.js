@@ -6,9 +6,6 @@ import EndChatModal from './components/endChatModal'
 import EndChatButton from './components/endChatButton'
 import ClickableMessages from './components/clickableMessages'
 
-// import the custom listeners
-import './listeners/CustomListeners';
-
 class App extends React.Component {
 
   state = {};
@@ -19,12 +16,15 @@ class App extends React.Component {
     const { configuration } = props;
 
     // Alter the predefined Message
-    FlexWebChat.MessagingCanvas.defaultProps.predefinedMessage.body = 'Hello There!';
-    FlexWebChat.MessagingCanvas.defaultProps.predefinedMessage.authorName = 'NFM Lending';
+    FlexWebChat.MessagingCanvas.defaultProps.predefinedMessage.authorName = 'Awesome Co';
+    FlexWebChat.MessagingCanvas.defaultProps.predefinedMessage.body = ' 👋 Are you a new or existing customer?';
+  
+    // Alter the Welcome Message
+    FlexWebChat.MessageList.WelcomeMessage = 'Welcome to Awesome Co, I hope you are having a wonderful day!, '
 
     // Chat Header Customizations
     FlexWebChat.MainHeader.defaultProps.imageUrl = './img/NFMLendingIcon_White.png';
-    FlexWebChat.MainHeader.defaultProps.titleText = "NFM Lending";
+    FlexWebChat.MainHeader.defaultProps.titleText = "Awesome Co";
     FlexWebChat.MainHeader.defaultProps.showTitle = true;
       
     FlexWebChat.Manager.create(configuration)
