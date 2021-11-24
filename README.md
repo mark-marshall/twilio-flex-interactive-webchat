@@ -90,7 +90,7 @@ https://www.twilio.com/console/studio/dashboard
 
 ![Plugin Demo](https://github.com/aestellwag/flex-selectable-chat-messages/blob/main/studio-flow-import-viaJSON.gif)
 
-From you'll need to update the function widget within the Studio Flow to point to your function
+From here you'll need to update the function widget within the Studio Flow to point to your function
 
 From the public folder, create the appConfig.js and change on variable within it
 ```bash
