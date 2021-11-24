@@ -23,7 +23,7 @@ class App extends React.Component {
     FlexWebChat.MessageList.WelcomeMessage = 'Welcome to Awesome Co, I hope you are having a wonderful day!, '
 
     // Chat Header Customizations
-    FlexWebChat.MainHeader.defaultProps.imageUrl = './img/NFMLendingIcon_White.png';
+    FlexWebChat.MainHeader.defaultProps.imageUrl = './img/companylogo.png';
     FlexWebChat.MainHeader.defaultProps.titleText = "Awesome Co";
     FlexWebChat.MainHeader.defaultProps.showTitle = true;
       
