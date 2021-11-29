@@ -484,28 +484,6 @@
           "y": 250
         }
       }
-    },
-    {
-      "name": "function_1",
-      "type": "run-function",
-      "transitions": [
-        {
-          "event": "success"
-        },
-        {
-          "event": "fail"
-        }
-      ],
-      "properties": {
-        "service_sid": "ZSddb1cff1d0d990491965642ec0e4daab",
-        "environment_sid": "ZE802a76b05699fbaf224ff07778eb840d",
-        "offset": {
-          "x": 760,
-          "y": 1325
-        },
-        "function_sid": "ZH5b230a5c5674ebfe76be1e1d7d89faac",
-        "url": "https://selectable-chat-messages-7889.twil.io/test2"
-      }
     }
   ],
   "initial_state": "Trigger",
