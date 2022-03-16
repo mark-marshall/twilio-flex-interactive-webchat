@@ -101,8 +101,8 @@
         "service": "{{trigger.message.InstanceSid}}",
         "channel": "{{trigger.message.ChannelSid}}",
         "from": "Fresh Fruit Bot",
-        "attributes": "{\n \"interactiveWebchatOptions\": {\n \"type\": \"dropdown\",\n \"options\": [{\"uuid\": \"39a5e78c-daf2-44be-ac00-50737f9c9d79\", \"content\": \"Choose a box...\",  \"value\": \"None\"},{\"uuid\": \"ccfbe80d-891e-4424-9a41-897ffdbb3932\", \"content\": \"Berry Bonanza 🫐\",  \"value\": \"Berry Bonanza\"},{\"uuid\": \"d2de75d0-5006-4c9a-8ce9-956d14a149e2\", \"content\": \"Seasonal Stapes ☀️\", \"value\": \"Seasonal Staples\"}, {\"uuid\": \"c3601efc-17b1-4978-8c93-964475bcdad7\", \"content\": \"Organic Delights 🌿\", \"value\": \"Organic Delights\"}]\n  }\n  }",
-        "body": "Which item would you like to purchase?",
+        "attributes": "{\n \"interactiveWebchatOptions\": {\n \"type\": \"dropdown\",\n \"options\": [{\"uuid\": \"ccfbe80d-891e-4424-9a41-897ffdbb3932\", \"content\": \"Berry Bonanza 🫐\",  \"value\": \"Berry Bonanza\"},{\"uuid\": \"d2de75d0-5006-4c9a-8ce9-956d14a149e2\", \"content\": \"Seasonal Stapes ☀️\", \"value\": \"Seasonal Staples\"}, {\"uuid\": \"c3601efc-17b1-4978-8c93-964475bcdad7\", \"content\": \"Organic Delights 🌿\", \"value\": \"Organic Delights\"}]\n  }\n  }",
+        "body": "Which box would you like to order?",
         "timeout": "3600"
       }
     },
@@ -129,7 +129,7 @@
         "service": "{{trigger.message.InstanceSid}}",
         "channel": "{{trigger.message.ChannelSid}}",
         "from": "Fresh Fruit Bot",
-        "attributes": "{\n \"interactiveWebchatOptions\": {\n \"type\": \"calendar\"\n  }\n  }",
+        "attributes": "{\n \"interactiveWebchatOptions\": {\n \"type\": \"calendar\",\n\"timezone\": \"Antarctica/McMurdo\"\n  }\n  }",
         "body": "Which date would you like your box to be delivered?",
         "timeout": "3600"
       }
