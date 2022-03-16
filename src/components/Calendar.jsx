@@ -1,26 +1,37 @@
-import React, { useState } from 'react';
-import { TextField, Button } from '@mui/material';
+// Package Imports
+import React, { useEffect } from 'react';
+import moment from 'moment-timezone';
+
+// Material UI
+import { TextField } from '@mui/material';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { DatePicker } from '@mui/lab';
 import DateAdapter from '@mui/lab/AdapterMoment';
-import moment from 'moment';
 
 const Calendar = ({ curInteractives, sendMessage }) => {
-  const [curDateValue, setDateValue] = useState(moment());
+  // Effects
+  useEffect(() => {
+    moment.tz.setDefault(curInteractives.timezone);
+  }, []);
 
+  // Render
   return (
     <div className="interactive-calendar-container">
       <LocalizationProvider dateAdapter={DateAdapter}>
         <DatePicker
           renderInput={(props) => <TextField {...props} />}
-          value={curDateValue}
-          defaultValue={moment()}
-          onChange={(value) => setDateValue(moment(value))}
+          value={moment()}
+          default={moment()}
+          onChange={(value) =>
+            sendMessage(
+              moment(value)
+                .tz(curInteractives.timezone)
+                .format('DD/MM/YYYY')
+            )
+          }
+          allowSameDateSelection={true}
         />
       </LocalizationProvider>
-      <Button onClick={() => sendMessage(curDateValue.format('MM/DD/YYYY'))}>
-        Select Date
-      </Button>
     </div>
   );
 };

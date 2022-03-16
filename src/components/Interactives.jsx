@@ -12,14 +12,18 @@ import './Interactives.css';
 
 // Consts
 const defaultCurInteractives = { type: '', options: [] };
-// type = buttons OR dropdown OR calendar
-// options is used for dropdown and buttons and specific props
 
 const Interactives = ({ manager, messageList, channelSid }) => {
   // Refs
   const interactivesContainer = useRef(null);
 
   // State
+
+  // interface Interactives {
+  //   type: '' | 'buttons' | 'dropdown' | 'calendar',
+  //   options?: {'value': string, 'content': string}[],
+  //   timezone?: "TZ database name" as per: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  // }
   const [curInteractives, setCurInteractives] = useState(
     defaultCurInteractives
   );

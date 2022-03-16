@@ -1,9 +1,11 @@
+// Package Imports
 import React from 'react';
+
+// Material UI
 import { Button } from '@mui/material';
 
-import './Buttons.css';
-
 const Buttons = ({ curInteractives, sendMessage }) => {
+  // Render
   return (
     <div className="interactive-buttons-container">
       {curInteractives.options.map((o, idx) => (

@@ -1,14 +1,20 @@
+// Package Imports
 import React from 'react';
+
+// Material UI
 import { FormControl, Select, MenuItem } from '@mui/material';
 
 const Dropdown = ({ curInteractives, sendMessage }) => {
+  // Render
   return (
     <div className="interactive-dropdown-container">
       <FormControl fullWidth>
         <Select
           labelId="select-label"
           id="select"
-          defaultValue={curInteractives.options[0].value}
+          defaultValue={''}
+          displayEmpty={true}
+          renderValue={(value) => value || 'Seasonal boxes'}
           onChange={(e) => sendMessage(e.target.value)}
         >
           {curInteractives.options.map((o, idx) => (

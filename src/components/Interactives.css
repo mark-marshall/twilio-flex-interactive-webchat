@@ -2,3 +2,85 @@
   width: 100%;
   margin-top: 20px;
 }
+
+/* Buttons */
+.interactive-buttons-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 0px;
+}
+
+.interactive-buttons-container button {
+  font-size: 0.8rem;
+  text-transform: none;
+  margin-bottom: 5px;
+  background: #cbe0f6;
+  color: #233659;
+  box-shadow: none;
+  padding: 10px;
+}
+
+.interactive-buttons-container button:hover {
+  background: #1976d2;
+  color: #fff;
+  box-shadow: none;
+}
+
+/* Dropdown */
+.interactive-dropdown-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.interactive-dropdown-container .MuiFormControl-root {
+  width: 80% !important;
+  background: #cbe0f6;
+  border-radius: 4px;
+}
+
+.interactive-dropdown-container .MuiSelect-select {
+  padding: 12px !important;
+  color: #233659 !important;
+  font-size: 0.9rem !important;
+}
+
+.MuiMenu-list li {
+  font-size: 0.8rem;
+}
+
+.MuiMenu-list li:hover {
+  background: #1976d2;
+  color: #fff;
+}
+
+.MuiOutlinedInput-root {
+  border: 0px;
+  outline: 0px;
+}
+
+fieldset {
+  display: none;
+}
+
+/* Calendar */
+.interactive-calendar-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.interactive-calendar-container .MuiFormControl-root {
+  width: 80% !important;
+  background: #cbe0f6;
+  border-radius: 4px;
+}
+
+.interactive-calendar-container .MuiOutlinedInput-root {
+  color: #233659 !important;
+  font-size: 0.9rem !important;
+}
