@@ -3,13 +3,21 @@
   "version": "2.0.0",
   "private": true,
   "dependencies": {
+    "@date-io/moment": "^2.13.1",
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
+    "@mui/lab": "^5.0.0-alpha.72",
+    "@mui/material": "^5.4.3",
     "@twilio/flex-webchat-ui": "^2.5.0",
     "array-findindex-polyfill": "^0.1.0",
+    "components": "^0.1.0",
     "ie-array-find-polyfill": "^1.1.0",
+    "moment": "^2.29.1",
     "react": "^16.5.2",
     "react-app-polyfill": "^1.0.1",
     "react-dom": "^16.5.2",
-    "react-scripts": "2.0.5"
+    "react-scripts": "2.0.5",
+    "styled": "^1.0.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
