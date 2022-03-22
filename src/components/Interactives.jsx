@@ -1,37 +1,35 @@
 // Package Imports
 import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 // Component Imports
 import Buttons from './Buttons';
 import Dropdown from './Dropdown';
 import Calendar from './Calendar';
 
-// CSS Imports
-import './Interactives.css';
+// Const Imports
+import { defaultCurInteractives } from '../consts';
 
-// Consts
-const defaultCurInteractives = { type: '', options: [] };
-
+// Component
 const Interactives = ({ manager, messageList, channelSid }) => {
   // Refs
   const interactivesContainer = useRef(null);
 
   // State
-
-  // interface Interactives {
+  // @ interface Interactives {
   //   type: '' | 'buttons' | 'dropdown' | 'calendar',
   //   options?: {'value': string, 'content': string}[],
+  //   dropdownLabel?: string
   //   timezone?: "TZ database name" as per: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   // }
   const [curInteractives, setCurInteractives] = useState(
     defaultCurInteractives
   );
 
-  // UI
+  // Effects
   useEffect(() => {
     if (
-      messageList &&
       messageList.length > 0 &&
       !messageList[messageList.length - 1].isFromMe &&
       messageList[messageList.length - 1].source.state.attributes
@@ -62,7 +60,7 @@ const Interactives = ({ manager, messageList, channelSid }) => {
   return (
     <>
       {curInteractives !== defaultCurInteractives ? (
-        <div ref={interactivesContainer} className="interactive-container">
+        <StyledInteractivesContainer ref={interactivesContainer}>
           {curInteractives.type === 'buttons' ? (
             <Buttons
               curInteractives={curInteractives}
@@ -81,7 +79,7 @@ const Interactives = ({ manager, messageList, channelSid }) => {
           ) : (
             <></>
           )}
-        </div>
+        </StyledInteractivesContainer>
       ) : (
         <></>
       )}
@@ -97,5 +95,11 @@ const mapStateToProps = (state) => {
     channelSid: state.flex.session.channelSid,
   };
 };
+
+// Styled Components
+const StyledInteractivesContainer = styled.div`
+  width: 100%;
+  margin-top: 20px;
+`;
 
 export default connect(mapStateToProps)(Interactives);
