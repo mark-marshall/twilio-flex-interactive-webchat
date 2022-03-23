@@ -14,7 +14,40 @@ import {
 } from '@mui/material';
 
 // Component
-const Dropdown = ({ curInteractives, sendMessage }) => {
+const Dropdown = ({ colorTheme, curInteractives, sendMessage }) => {
+  // Styled Components
+  const StyledDropdownContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  `;
+
+  const StyledFormControl = styled(FormControl)`
+    width: 80%;
+    background: ${colorTheme.Input.background};
+    border-radius: 4px;
+    fieldset {
+      display: none;
+    }
+  `;
+
+  const StyledSelect = styled(Select)`
+    .MuiSelect-select {
+      padding: 12px;
+      font-size: 0.9rem;
+      color: ${colorTheme.Input.fontColor};
+    }
+  `;
+
+  const StyledMenuItem = styled(MenuItem)`
+    font-size: 0.8rem;
+    &:hover {
+      background: ${colorTheme.Hover.background};
+      color: ${colorTheme.Hover.fontColor};
+    }
+  `;
+
   // Render
   return (
     <StyledEngineProvider injectFirst>
@@ -41,38 +74,5 @@ const Dropdown = ({ curInteractives, sendMessage }) => {
     </StyledEngineProvider>
   );
 };
-
-// Styled Components
-const StyledDropdownContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-`;
-
-const StyledFormControl = styled(FormControl)`
-  width: 80%;
-  background: #cbe0f6;
-  border-radius: 4px;
-  fieldset {
-    display: none;
-  }
-`;
-
-const StyledSelect = styled(Select)`
-  .MuiSelect-select {
-    padding: 12px !important;
-    color: #233659 !important;
-    font-size: 0.9rem !important;
-  }
-`;
-
-const StyledMenuItem = styled(MenuItem)`
-  font-size: 0.8rem;
-  &:hover {
-    background: #1976d2;
-    color: #fff;
-  }
-`;
 
 export default Dropdown;

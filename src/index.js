@@ -2,16 +2,24 @@
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 
+// Package Imports
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'regenerator-runtime/runtime';
+
+// CSS Imports
 import './index.css';
-import App from './App';
+
+// Component Imports
+import App from './App.jsx';
+
+// Service worker
 import registerServiceWorker from './registerServiceWorker';
 
+// Render into DOM
 ReactDOM.render(
-    <App configuration={window.appConfig} />,
-    document.getElementById("root")
+  <App configuration={window.appConfig} />,
+  document.getElementById('root')
 );
 
 registerServiceWorker();

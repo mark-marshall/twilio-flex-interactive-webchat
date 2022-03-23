@@ -10,11 +10,31 @@ import { DatePicker } from '@mui/lab';
 import DateAdapter from '@mui/lab/AdapterMoment';
 
 // Component
-const Calendar = ({ curInteractives, sendMessage }) => {
+const Calendar = ({ colorTheme, curInteractives, sendMessage }) => {
   // Effects
   useEffect(() => {
     moment.tz.setDefault(curInteractives.timezone);
   }, []);
+
+  // Styled Components
+  const StyledCalendarContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    fieldset {
+      display: none;
+    }
+    .MuiFormControl-root {
+      width: 80%;
+      background: ${colorTheme.Input.background};
+      border-radius: 4px;
+    }
+    .MuiOutlinedInput-root {
+      color: ${colorTheme.Input.fontColor};
+      font-size: 0.9rem;
+    }
+  `;
 
   // Render
   return (
@@ -39,25 +59,5 @@ const Calendar = ({ curInteractives, sendMessage }) => {
     </StyledEngineProvider>
   );
 };
-
-// Styled Components
-const StyledCalendarContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  fieldset {
-    display: none;
-  }
-  .MuiFormControl-root {
-    width: 80%;
-    background: #cbe0f6;
-    border-radius: 4px;
-  }
-  .MuiOutlinedInput-root {
-    color: #233659;
-    font-size: 0.9rem;
-  }
-`;
 
 export default Calendar;

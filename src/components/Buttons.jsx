@@ -6,7 +6,30 @@ import styled from 'styled-components';
 import { Button, StyledEngineProvider } from '@mui/material';
 
 // Component
-const Buttons = ({ curInteractives, sendMessage }) => {
+const Buttons = ({ colorTheme, curInteractives, sendMessage }) => {
+  // Styled Components
+  const StyledButtonsContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  `;
+
+  const StyledButton = styled(Button)`
+    font-size: 0.8rem;
+    text-transform: none;
+    margin-bottom: 5px;
+    background: ${colorTheme.Primary.background};
+    color: ${colorTheme.Primary.fontColor};
+    box-shadow: none;
+    padding: 10px;
+    &:hover {
+      background: ${colorTheme.Hover.background};
+      color: ${colorTheme.Hover.fontColor};
+      box-shadow: none;
+    }
+  `;
+
   // Render
   return (
     <StyledEngineProvider injectFirst>
@@ -24,29 +47,5 @@ const Buttons = ({ curInteractives, sendMessage }) => {
     </StyledEngineProvider>
   );
 };
-
-// Styled Components
-const StyledButtonsContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding-right: 0px;
-`;
-
-const StyledButton = styled(Button)`
-  font-size: 0.8rem;
-  text-transform: none;
-  margin-bottom: 5px;
-  background: #cbe0f6;
-  color: #233659;
-  box-shadow: none;
-  padding: 10px;
-  &:hover {
-    background: #1976d2;
-    color: #fff;
-    box-shadow: none;
-  }
-`;
 
 export default Buttons;

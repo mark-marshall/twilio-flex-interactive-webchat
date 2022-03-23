@@ -12,7 +12,7 @@ import Calendar from './Calendar';
 import { defaultCurInteractives } from '../consts';
 
 // Component
-const Interactives = ({ manager, messageList, channelSid }) => {
+const Interactives = ({ colorTheme, manager, messageList, channelSid }) => {
   // Refs
   const interactivesContainer = useRef(null);
 
@@ -56,6 +56,12 @@ const Interactives = ({ manager, messageList, channelSid }) => {
     curChannel.sendMessage(message);
   };
 
+  // Styled Components
+  const StyledInteractivesContainer = styled.div`
+    width: 100%;
+    margin-top: 20px;
+  `;
+
   // Render
   return (
     <>
@@ -63,16 +69,19 @@ const Interactives = ({ manager, messageList, channelSid }) => {
         <StyledInteractivesContainer ref={interactivesContainer}>
           {curInteractives.type === 'buttons' ? (
             <Buttons
+              colorTheme={colorTheme.Buttons}
               curInteractives={curInteractives}
               sendMessage={sendMessage}
             />
           ) : curInteractives.type === 'dropdown' ? (
             <Dropdown
+              colorTheme={colorTheme.Dropdown}
               curInteractives={curInteractives}
               sendMessage={sendMessage}
             />
           ) : curInteractives.type === 'calendar' ? (
             <Calendar
+              colorTheme={colorTheme.Calendar}
               curInteractives={curInteractives}
               sendMessage={sendMessage}
             />
@@ -95,11 +104,5 @@ const mapStateToProps = (state) => {
     channelSid: state.flex.session.channelSid,
   };
 };
-
-// Styled Components
-const StyledInteractivesContainer = styled.div`
-  width: 100%;
-  margin-top: 20px;
-`;
 
 export default connect(mapStateToProps)(Interactives);
