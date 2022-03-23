@@ -11,6 +11,8 @@ var personalizedColors = {
   primaryButtonColor: '#FFFFFF',
   secondaryButtonBackground: '#6e7180',
   secondaryButtonColor: '#FFFFFF',
+  tertiaryButtonBackground: '#cbe0f6',
+  tertiaryButtonColor: '#233659',
 };
 
 var brandMessageBubbleColors = function(bgColor) {
@@ -78,13 +80,44 @@ var brandedColors = {
       },
     },
   },
+
+  Interactives: {
+    Buttons: {
+      Primary: {
+        background: personalizedColors.tertiaryButtonBackground,
+        fontColor: personalizedColors.tertiaryButtonColor,
+      },
+      Hover: {
+        background: personalizedColors.primaryButtonBackground,
+        fontColor: personalizedColors.secondaryButtonColor,
+      },
+    },
+
+    Dropdown: {
+      Input: {
+        background: personalizedColors.tertiaryButtonBackground,
+        fontColor: personalizedColors.tertiaryButtonColor,
+      },
+      Hover: {
+        background: personalizedColors.primaryButtonBackground,
+        fontColor: personalizedColors.secondaryButtonColor,
+      },
+    },
+
+    Calendar: {
+      Input: {
+        background: personalizedColors.tertiaryButtonBackground,
+        fontColor: personalizedColors.tertiaryButtonColor,
+      },
+    },
+  },
 };
 
 var appConfig = {
-  //  change the your AccountSid
+  //  Change the your AccountSid
   accountSid: 'AC...',
-  // change to your Flex Flow SID
-  flexFlowSid: 'FO...',
+  // Change to your Flex Flow SID
+  flexFlowSid: 'F0...',
   colorTheme: {
     overrides: brandedColors,
   },
