@@ -56,7 +56,7 @@ npm start
 
 ## Studio Flow JSON Examples
 
-This JSON should be included within the "Message & Chat Config" for a given widget under the "Message Attributes" input:
+Any JSON should be included within the "Message & Chat Config" for a given widget under the "Message Attributes" input. The below examples are taken from the Studio Flow included in provision.js
 
 ### Buttons
 
