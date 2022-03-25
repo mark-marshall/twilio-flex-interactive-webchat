@@ -52,7 +52,7 @@ const runProvision = async () => {
     const studioFlow = await twilioClient.studio.flows.create({
       commitMessage: 'First Commit',
       friendlyName: 'Interactive Webchat',
-      status: 'draft',
+      status: 'published',
       definition: {
         description: 'Webchat IVR for twilio-flex-interactive-webchat',
         states: [

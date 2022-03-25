@@ -12,7 +12,7 @@ body {
   position: relative;
   background-size: cover;
   background-image: url('/img/background.png');
-  background-color: #fff;
+  background-color: #6d7697;
 }
 
 body:after {

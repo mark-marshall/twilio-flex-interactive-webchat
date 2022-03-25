@@ -1,0 +1,1 @@
+{"ast":null,"code":"var hasOwn = require('../internals/has-own-property');\n\nmodule.exports = function (descriptor) {\n  return descriptor !== undefined && (hasOwn(descriptor, 'value') || hasOwn(descriptor, 'writable'));\n};","map":null,"metadata":{},"sourceType":"script"}
