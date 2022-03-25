@@ -1,0 +1,1 @@
+{"ast":null,"code":"var global = require('../internals/global');\n\nvar isCallable = require('../internals/is-callable');\n\nvar inspectSource = require('../internals/inspect-source');\n\nvar WeakMap = global.WeakMap;\nmodule.exports = isCallable(WeakMap) && /native code/.test(inspectSource(WeakMap));","map":null,"metadata":{},"sourceType":"script"}

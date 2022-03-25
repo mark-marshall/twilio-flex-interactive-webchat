@@ -1,0 +1,1 @@
+{"ast":null,"code":"var $ = require('../internals/export');\n\nvar bind = require('../internals/function-bind'); // `Function.prototype.bind` method\n// https://tc39.es/ecma262/#sec-function.prototype.bind\n\n\n$({\n  target: 'Function',\n  proto: true,\n  forced: Function.bind !== bind\n}, {\n  bind: bind\n});","map":null,"metadata":{},"sourceType":"script"}

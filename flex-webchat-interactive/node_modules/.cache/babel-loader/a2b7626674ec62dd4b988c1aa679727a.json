@@ -1,0 +1,1 @@
+{"ast":null,"code":"var global = require('../internals/global');\n\nvar classof = require('../internals/classof');\n\nvar String = global.String;\n\nmodule.exports = function (argument) {\n  if (classof(argument) === 'Symbol') throw TypeError('Cannot convert a Symbol value to a string');\n  return String(argument);\n};","map":null,"metadata":{},"sourceType":"script"}

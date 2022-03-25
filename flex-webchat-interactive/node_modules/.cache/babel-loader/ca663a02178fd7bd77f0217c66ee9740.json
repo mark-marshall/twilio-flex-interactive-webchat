@@ -1,0 +1,1 @@
+{"ast":null,"code":"var toString = require('../internals/to-string');\n\nmodule.exports = function (argument, $default) {\n  return argument === undefined ? arguments.length < 2 ? '' : $default : toString(argument);\n};","map":null,"metadata":{},"sourceType":"script"}
