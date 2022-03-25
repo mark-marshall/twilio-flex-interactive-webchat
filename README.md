@@ -15,7 +15,7 @@ npm install
 2. Run the provision script
 
 ```
-node provision.js
+npm start
 ```
 
 The provision script will request:
