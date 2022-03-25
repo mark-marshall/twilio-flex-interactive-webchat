@@ -19,7 +19,7 @@ const Interactives = ({ colorTheme, manager, messageList, channelSid }) => {
   // State
   // @ interface Interactives {
   //   type: '' | 'buttons' | 'dropdown' | 'calendar',
-  //   options?: {'value': string, 'content': string}[],
+  //   options?: {'uuid': string, 'value': string, 'content': string}[],
   //   dropdownLabel?: string
   //   timezone?: "TZ database name" as per: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   // }
