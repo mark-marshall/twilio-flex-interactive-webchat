@@ -79,14 +79,14 @@ This JSON should be included within the "Message & Chat Config" for a given widg
         "type": "buttons",
         "options": [
             {
-            "uuid": "78d7ffc3-bdb5-40dd-a455-3ef352fab140",
-            "content": "I want to place an order 🥝",
-            "value": "I want to place an order"
+                "uuid": "78d7ffc3-bdb5-40dd-a455-3ef352fab140",
+                "content": "I want to place an order 🥝",
+                "value": "I want to place an order"
             },
             {
-            "uuid": "e11ef994-4a61-4a0c-aa5f-0ae4d93b91cf",
-            "content": "I want to cancel my susbcription 😥",
-            "value": "I want to cancel my subscription"
+                "uuid": "e11ef994-4a61-4a0c-aa5f-0ae4d93b91cf",
+                "content": "I want to cancel my susbcription 😥",
+                "value": "I want to cancel my subscription"
             }
         ]
     }
@@ -115,14 +115,14 @@ This JSON should be included within the "Message & Chat Config" for a given widg
         "type": "dropdown",
         "options": [
             {
-            "uuid": "ccfbe80d-891e-4424-9a41-897ffdbb3932",
-            "content": "Berry Bonanza 🫐",
-            "value": "Berry Bonanza"
+                "uuid": "ccfbe80d-891e-4424-9a41-897ffdbb3932",
+                "content": "Berry Bonanza 🫐",
+                "value": "Berry Bonanza"
             },
             {
-            "uuid": "d2de75d0-5006-4c9a-8ce9-956d14a149e2",
-            "content": "Seasonal Stapes ☀️",
-            "value": "Seasonal Staples"
+                "uuid": "d2de75d0-5006-4c9a-8ce9-956d14a149e2",
+                "content": "Seasonal Stapes ☀️",
+                "value": "Seasonal Staples"
             }
         ]
     }
@@ -136,8 +136,8 @@ This JSON should be included within the "Message & Chat Config" for a given widg
 ```
 {
     interactiveWebchatOptions: {
-    type: 'calendar',
-    timezone: string ("TZ database name" as per: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+        type: 'calendar',
+        timezone: string ("TZ database name" as per: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
     }
 }
 ```
