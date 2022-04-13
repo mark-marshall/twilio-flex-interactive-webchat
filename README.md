@@ -25,7 +25,7 @@ The provision script will request:
 
 The provision script will:
 
-- Create a Studio Flow with three messages, that contain the necessary attributes to generate i) a button set, ii) a dropdown, and iii) calendar before forawrding the query onto Flex
+- Create a Studio Flow with three messages, that contain the necessary attributes to generate i) a button set, ii) a dropdown, and iii) a calendar before forwarding the engagement onto Flex
 - Updates the default web Flex Flow with the newly created Studio Flow
 - Prints the SID of the web Flex Flow which you will need to start the application as detailed below
 
